@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Preventing Antibiotic Misuse at Home"
+    "Diabetes Foot Care Preventing Infections"
   );
 
   console.log(

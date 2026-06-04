@@ -15,13 +15,13 @@ export async function generateDesign(
     model: "gpt-5-nano",
 
     input: `
-You are an award winning healthcare designer.
+You are an expert healthcare infographic designer.
 
 Generate JSON only.
 
 {
-  "layoutType":"",
-  "heroPlacement":"",
+  "layoutType":"grid-based poster",
+  "heroPlacement":"top-center"
   "colorTheme":"",
   "cardStyle":"",
   "contentDensity":""

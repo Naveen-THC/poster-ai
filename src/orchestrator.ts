@@ -7,7 +7,7 @@ import { generateDesign }
 import { generateAssets }
   from "./ai/assetGenerator";
 
-import { generateHeroImage }
+import { generatePosterImage }
   from "./ai/imageGenerator";
 
 export async function buildPoster(
@@ -32,9 +32,14 @@ export async function buildPoster(
 
 
   console.time("image");
-  const heroImage =
-    await generateHeroImage(
-      assets.heroImagePrompt
+    const spec = {
+      content,
+      design,
+      assets
+    };
+
+    const heroImage = await generatePosterImage(
+      spec
     );
     console.timeEnd("image");
 
