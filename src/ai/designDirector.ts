@@ -20,11 +20,18 @@ You are an expert healthcare infographic designer.
 Generate JSON only.
 
 {
-  "layoutType":"grid-based poster",
-  "heroPlacement":"top-center"
-  "colorTheme":"",
-  "cardStyle":"",
-  "contentDensity":""
+  "layoutType": "editorial"
+  "heroPlacement": "top-center"
+  "safeMargin": "10%"
+  "contentCoverage": "32"
+  "maxSections": 3
+  "maxBulletsPerSection": 2
+  "headlineArea": "10%"
+  "heroArea": "32%"
+  "contentArea": "42"
+  "ctaArea": "20%"
+  "aspectRatio": "1:1"
+
 }
 
 Poster title:

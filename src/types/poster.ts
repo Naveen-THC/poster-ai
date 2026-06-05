@@ -5,7 +5,12 @@ export interface PosterContent {
     title: string;
     items: string[];
   }[];
-  cta: string;
+  cta: {
+    name: string;
+    phone: string;
+    email: string;
+    location: string;
+  };
 }
 
 export interface PosterDesign {
@@ -14,6 +19,10 @@ export interface PosterDesign {
   colorTheme: string;
   cardStyle: string;
   contentDensity: string;
+  maxSections: number;
+  maxBulletsPerSection: number;
+  safeMargin: string;
+  contentCoverage: string;
 }
 
 export interface VisualAssets {

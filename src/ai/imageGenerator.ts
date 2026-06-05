@@ -11,7 +11,16 @@ const client = new OpenAI({
 });
 
 function buildPosterPrompt(spec: PosterSpec): string {
+  
+
   const { content, design, assets } = spec;
+
+  const{
+    name,
+    phone,
+    email,
+    location
+  } = content.cta;
 
   const sections = content.sections
     .map(
@@ -24,72 +33,50 @@ ${section.items.map((i) => `• ${i}`).join("\n")}
     .join("\n\n");
 
   return `
-You are an award-winning healthcare infographic designer creating a premium social media healthcare awareness poster for hospitals, clinics, and medical specialists.
+You are an healthcare infographic designer creating a premium social media healthcare awareness poster for hospitals, clinics, and medical specialists.
 
-========================
-POSTER CONTENT
-========================
+[POSTER CONTENT]
+TITLE: ${content.title}
+SUBTITLE: ${content.subtitle}
+CONTENT SECTIONS:${sections}
+CALL TO ACTION: ${content.cta}
 
-TITLE:
-${content.title}
+[DESIGN SYSTEM]
+LAYOUT TYPE: ${design.layoutType}
+HERO PLACEMENT: ${design.heroPlacement}
+MAX SECTIONS: ${design.maxSections}
+MAX BULLETS PER SECTION: ${design.maxBulletsPerSection}
+SAFE MARGIN: ${design.safeMargin}
+CONTENT COVERAGE: ${design.contentCoverage}
 
-SUBTITLE:
-${content.subtitle}
+[VISUAL DIRECTION]
+MAIN VISUAL: ${assets.heroImagePrompt}
+BACKGROUND VISUAL: ${assets.backgroundPrompt}
 
-CONTENT SECTIONS:
+[DOCTOR INFORMATION]
 
-${sections}
+Doctor Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Location: ${location}
 
-CALL TO ACTION:
-${content.cta}
+Display these details prominently in the footer/contact section.
 
-========================
-DESIGN SYSTEM
-========================
+Include:
+• Professional doctor profile card
+• Circular doctor photograph
+• Doctor name and credentials
+• Contact phone number
+• Email address
+• Clinic location
+• Premium healthcare branding
 
-LAYOUT TYPE:
-${design.layoutType}
-
-HERO PLACEMENT:
-${design.heroPlacement}
-
-COLOR THEME:
-${design.colorTheme}
-
-CARD STYLE:
-${design.cardStyle}
-
-CONTENT DENSITY:
-${design.contentDensity}
-
-========================
-VISUAL DIRECTION
-========================
-
-MAIN VISUAL:
-
-${assets.heroImagePrompt}
-
-BACKGROUND VISUAL:
-
-${assets.backgroundPrompt}
-
-========================
-CRITICAL REQUIREMENTS
-========================
-
+[CRITICAL REQUIREMENTS]
 THIS MUST BE A COMPLETE HEALTHCARE INFOGRAPHIC POSTER.
-
 DO NOT generate a standalone photograph.
-
-DO NOT generate only a hero image.
-
-DO NOT generate a lifestyle photo.
-
 The final output must look like a professionally designed medical awareness campaign created by a hospital marketing agency.
 
 The poster should contain:
-
 • Large headline area
 • Supporting subtitle
 • Educational content cards
@@ -101,65 +88,49 @@ The poster should contain:
 • Clean spacing
 • Modern editorial layout
 
+[LAYOUT STRUCTURE]
+TOP:
+Large headline
+Supporting subtitle
+Hero visual integrated into design
 
-========================
-VISUAL STYLE
-========================
+MIDDLE:
+Educational content organized into multiple cards
+Infographic blocks
+Medical icons
+Clear section separation
+Easy scanning hierarchy
 
+BOTTOM:
+Call to action
+Premium footer composition
+
+[VISUAL STYLE]
 Professional healthcare marketing.
-
 Medical awareness campaign.
-
-Instagram-ready poster.
-
-Editorial infographic.
-
 Premium typography.
-
-Rounded cards.
-
 Subtle shadows.
-
 Hospital-quality branding.
-
 Clean white space.
-
 High readability.
-
 Modern composition.
-
 Balanced layout.
-
 Beautiful visual hierarchy.
-
 Visually engaging.
-
 Premium healthcare advertisement.
 
-========================
-TEXT HANDLING
-========================
-
+[TEXT HANDLING]
 Do NOT attempt to write every bullet point exactly.
-
-Use the provided content as design guidance.
-
+Use the provided content as design guidance and keep the bullet points short.
 Represent educational information using:
-
 • Headings
 • Visual content blocks
 • Infographic cards
 • Callout areas
 • Simplified readable text
 
-Prioritize layout quality over text quantity.
-
-========================
-QUALITY TARGET
-========================
-
+[QUALITY TARGET]
 The final image should resemble premium healthcare posters created by Apollo Hospitals, Fortis Hospitals, Mayo Clinic, Cleveland Clinic, or top medical marketing agencies.
-
 The poster should feel elegant, modern, trustworthy, educational, and visually beautiful.
 `;
 }
@@ -167,30 +138,18 @@ The poster should feel elegant, modern, trustworthy, educational, and visually b
 export async function generatePosterImage(
   spec: PosterSpec
 ) {
-  console.log("\n====================");
-  console.log("POSTER SPEC");
-  console.log("====================\n");
-
-  console.log(JSON.stringify(spec, null, 2));
 
   const prompt = buildPosterPrompt(spec);
-
-  console.log("\n====================");
-  console.log("FINAL IMAGE PROMPT");
-  console.log("====================\n");
-
-  console.log(prompt);
 
   const image = await client.images.generate({
     model: "gpt-image-1",
     prompt,
-    size: "1024x1024",
   });
 
   const b64 = image.data?.[0]?.b64_json;
 
   if (!b64) {
-    throw new Error("No image returned from OpenAI");
+    throw new Error("No image returned");
   }
 
   fs.writeFileSync(
@@ -198,7 +157,7 @@ export async function generatePosterImage(
     Buffer.from(b64, "base64")
   );
 
-  console.log("\n✅ Poster saved as poster.png\n");
+  console.log("\n Poster saved as poster.png\n");
 
   return "poster.png";
 }
