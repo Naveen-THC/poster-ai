@@ -25,7 +25,7 @@ Return JSON only.
 {
   "heroImagePrompt":"",
   "backgroundPrompt":"",
-  }
+}
 `,
   });
 

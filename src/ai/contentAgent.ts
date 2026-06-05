@@ -26,8 +26,8 @@ Return JSON only.
   "subtitle":"",
   "sections":[
     {
-      "title":"",
-      "items":[]
+      "title":"give 2-3 short section titles",
+      "items":[give 2 short bullet points]
     }
   ],
   "cta":

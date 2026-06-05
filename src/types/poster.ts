@@ -6,6 +6,7 @@ export interface PosterContent {
     items: string[];
   }[];
   cta: {
+    profilepicture: string;
     name: string;
     phone: string;
     email: string;
@@ -32,6 +33,5 @@ export interface VisualAssets {
 
 export interface PosterSpec {
   content: PosterContent;
-  design: PosterDesign;
   assets: VisualAssets;
 }

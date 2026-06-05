@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Diabetes Foot Care Preventing Infections"
+    "Recognizing Pregnancy Warning Signs Fast"
   );
 
   console.log(

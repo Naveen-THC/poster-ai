@@ -1,9 +1,6 @@
 import { generatePosterContent }
   from "./ai/contentAgent";
 
-import { generateDesign }
-  from "./ai/designDirector";
-
 import { generateAssets }
   from "./ai/assetGenerator";
 
@@ -13,40 +10,30 @@ import { generatePosterImage }
 export async function buildPoster(
   topic: string
 ) {
-
   console.time("content");
 
+  const content =
+    await generatePosterContent(topic);
 
-    const content = await generatePosterContent(topic);
-    console.timeEnd("content");
+  console.timeEnd("content");
 
-    console.time("design");
-    console.time("assets");
-    const [design, assets] =
-      await Promise.all([
-        generateDesign(content.title),
-        generateAssets(topic),
-      ]);
-      console.timeEnd("design");
-      console.timeEnd("assets");
+  console.time("assets");
 
+  const assets =
+    await generateAssets(topic);
 
-  console.time("image");
-    const spec = {
-      content,
-      design,
-      assets
-    };
+  console.timeEnd("assets");
 
-    const heroImage = await generatePosterImage(
-      spec
-    );
-    console.timeEnd("image");
-
-  return {
+  const spec = {
     content,
-    design,
     assets,
-    heroImage,
   };
+
+  console.time("poster");
+
+  const draftPoster =
+    await generatePosterImage(spec);
+
+  console.timeEnd("poster");
+
 }
