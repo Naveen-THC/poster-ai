@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/index.ts"
-
   },
   "keywords": [],
   "author": "",
@@ -14,7 +13,8 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^17.4.2",
-    "openai": "^6.41.0"
+    "openai": "^6.41.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/node": "^25.9.1",
