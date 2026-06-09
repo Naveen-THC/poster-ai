@@ -1,15 +1,15 @@
 import sharp from "sharp";
 import fs from "fs";
 
-const POSTER_PATH = "../../poster.png";
-const PROFILE_PATH = "profilePic.jpeg";
+const POSTER_PATH = "poster.png";
+const PROFILE_PATH = "src/scripts/profilePic.jpeg";
 const OUTPUT_PATH = "final-poster.png";
 
 
 // Adjust these values after testing
-const AVATAR_SIZE = 180;
-const AVATAR_LEFT = 110;
-const AVATAR_TOP = 1055;
+const AVATAR_SIZE = 210;
+const AVATAR_LEFT = 60;
+const AVATAR_TOP = 1020;
 
 async function createCircularAvatar(
   profilePath: string,
@@ -68,3 +68,5 @@ export async function overlayProfile() {
 
   console.log(`Saved: ${OUTPUT_PATH}`);
 }
+
+overlayProfile().catch(console.error);

@@ -103,15 +103,6 @@ This area will be replaced later with an actual doctor profile photograph.
 [VISUAL DIRECTION]
 MAIN VISUAL: ${assets.heroImagePrompt}
 BACKGROUND VISUAL: ${assets.backgroundPrompt}
-
-[RESERVED REGION]
-A circular region is reserved for post-processing.
-No generated content may occupy:
-Left: 110px
-Top: 1055px
-Width: 180px
-Height: 180px
-Treat this area as unavailable space.
 `;
 }
 
