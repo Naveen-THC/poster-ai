@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import fs from "fs";
 
-const POSTER_PATH = "poster31.png";
+const POSTER_PATH = "../../poster.png";
 const PROFILE_PATH = "profilePic.jpeg";
 const OUTPUT_PATH = "final-poster.png";
 
@@ -41,7 +41,7 @@ async function createCircularAvatar(
     .toBuffer();
 }
 
-async function overlayProfile() {
+export async function overlayProfile() {
   if (!fs.existsSync(POSTER_PATH)) {
     throw new Error(`Poster not found: ${POSTER_PATH}`);
   }
@@ -66,7 +66,5 @@ async function overlayProfile() {
     .png()
     .toFile(OUTPUT_PATH);
 
-  console.log(`✅ Saved: ${OUTPUT_PATH}`);
+  console.log(`Saved: ${OUTPUT_PATH}`);
 }
-
-overlayProfile().catch(console.error);

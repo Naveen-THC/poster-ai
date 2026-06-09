@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Recognizing Pregnancy Warning Signs Fast"
+    "Preventing Tooth Decay With Fluoride Habits"
   );
 
   console.log(

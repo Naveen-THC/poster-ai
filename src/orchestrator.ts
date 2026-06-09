@@ -7,6 +7,9 @@ import { generateAssets }
 import { generatePosterImage }
   from "./ai/imageGenerator";
 
+import { overlayProfile }
+  from "./scripts/overlayProfile";
+
 export async function buildPoster(
   topic: string
 ) {
@@ -31,9 +34,15 @@ export async function buildPoster(
 
   console.time("poster");
 
-  const draftPoster =
-    await generatePosterImage(spec);
+  await generatePosterImage(spec);
 
   console.timeEnd("poster");
 
+  console.time("profile-overlay");
+
+  await overlayProfile();
+
+  console.timeEnd("profile-overlay");
+
+  return "final-poster.png";
 }

@@ -56,6 +56,10 @@ Preserve all text exactly.
 TITLE: ${content.title}
 SUBTITLE: ${content.subtitle}
 CONTENT SECTIONS:${sections}
+[CTA LAYOUT]
+The doctor information, phone number, email, and location should be arranged to the right of the profile photo placeholder.
+The reserved profile photo circle must remain unobstructed.
+Maintain adequate spacing.
 CALL TO ACTION: [
 ${content.cta}
 ${content.cta.name}
@@ -74,12 +78,40 @@ CONTENT COVERAGE: 32%
 HEADLINE AREA: 10%
 HERO AREA: 32%
 CONTENT AREA: 42%
-CTA AREA: 20%
+CTA AREA: 25%
 IMAGE ASPECT RATIO: Square (1:1)
+
+[PROFILE PHOTO PLACEHOLDER]
+IMPORTANT:
+Reserve a circular profile photo area in the bottom-left CTA section.
+
+Profile placeholder specifications:
+• Diameter: 180px
+• Position:
+  Left = 110px
+  Top = 1055px
+• Canvas size = 1254×1254
+
+Requirements:
+• Leave the circle EMPTY
+• The circle should appear as a clean professional placeholder frame
+• Maintain clear space around the circle
+• No important text should overlap this area
+
+This area will be replaced later with an actual doctor profile photograph.
 
 [VISUAL DIRECTION]
 MAIN VISUAL: ${assets.heroImagePrompt}
 BACKGROUND VISUAL: ${assets.backgroundPrompt}
+
+[RESERVED REGION]
+A circular region is reserved for post-processing.
+No generated content may occupy:
+Left: 110px
+Top: 1055px
+Width: 180px
+Height: 180px
+Treat this area as unavailable space.
 `;
 }
 
