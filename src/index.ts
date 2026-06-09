@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Preventing Tooth Decay With Fluoride Habits"
+    "Preventing Blue Light Overuse At Night"
   );
 
   console.log(
