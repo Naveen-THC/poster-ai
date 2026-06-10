@@ -29,14 +29,7 @@ Return JSON only.
       "title":"give 2-3 short section titles",
       "items":[give 2 short bullet points]
     }
-  ],
-  "cta":
-  {
-  "name":"Dr. Naveen Chary, MD, FACP",
-  "phone":"555-123-4567",
-  "email":"naveen.chary@healthcare.com",
-  "location":"Taranagar, lingampally, hyderabad"
-  }
+  ]
 }
 `,
   });
