@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Preventing Blue Light Overuse At Night"
+    "Recognizing Cancer Warning Signs Early"
   );
 
   console.log(

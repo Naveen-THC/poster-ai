@@ -1,6 +1,11 @@
-import OpenAI from "openai";
+import OpenAI, { toFile }  from "openai";
 import dotenv from "dotenv";
 import fs from "fs";
+
+const imageFiles = [
+    "src/scripts/doctor-transparent.png",
+];
+
 
 import { PosterSpec } from "../types/poster";
 
@@ -9,6 +14,7 @@ dotenv.config();
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
 
 
 function buildPosterPrompt(spec: PosterSpec): string {
@@ -81,24 +87,22 @@ CTA AREA: 25%
 IMAGE ASPECT RATIO: Square (1:1)
 
 [PROFILE PHOTO PLACEHOLDER]
-Reserve 20-22% of the canvas in the lower-left region for post-production branding elements.
+A transparent doctor portrait image is provided.
 
-This region must remain visually clean.
+Requirements: 
+• Use the provided portrait. 
+• Preserve the face exactly. 
+• Do not generate a different person. 
+• Position the portrait in the lower-left CTA section. 
+• Keep head and shoulders visible. 
+• Scale proportionally. 
+• Leave sufficient room on the right for: 
+- Doctor name 
+- Phone 
+- Email 
+- Location 
+• Integrate naturally with the poster design.
 
-Allowed:
-• background gradients
-• subtle textures
-• soft shadows
-
-Not allowed:
-• faces
-• people
-• text
-• icons
-• medical illustrations
-• important content
-
-This area will be replaced later with an actual doctor profile photograph.
 
 [VISUAL DIRECTION]
 MAIN VISUAL: ${assets.heroImagePrompt}
@@ -112,8 +116,19 @@ export async function generatePosterImage(
 
   const prompt = buildPosterPrompt(spec);
 
-  const image = await client.images.generate({
+  const images = await Promise.all(
+    imageFiles.map(async (file) =>
+        await toFile(fs.createReadStream(file), null, {
+            type: "image/png",
+        })
+    ),
+);
+
+console.log("Uploading images:", imageFiles);
+
+  const image = await client.images.edit({
     model: "gpt-image-2",
+    image: images,
     prompt,
   });
 
