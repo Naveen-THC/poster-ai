@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Preventing Blue Light Overuse At Night"
+    "Cervical Screening After Age 30 What to Expect"
   );
 
   console.log(
