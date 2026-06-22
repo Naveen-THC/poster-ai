@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Cervical Screening After Age 30 What to Expect"
+    "Peripheral Artery Disease",
   );
 
   console.log(
