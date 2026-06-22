@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Preventing Blue Light Overuse At Night"
+    "Peripheral Artery Disease",
   );
 
   console.log(

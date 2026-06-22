@@ -45,10 +45,6 @@ Do not:
 • Rewrite
 • Summarize
 • Correct spelling
-• Modify phone numbers
-• Modify email addresses
-• Modify doctor names
-• Modify locations
 
 Preserve all text exactly.
 
@@ -56,16 +52,6 @@ Preserve all text exactly.
 TITLE: ${content.title}
 SUBTITLE: ${content.subtitle}
 CONTENT SECTIONS:${sections}
-[CTA LAYOUT]
-The doctor information, phone number, email, and location should be arranged to the right of the profile photo placeholder.
-Maintain adequate spacing.
-CALL TO ACTION: [
-${content.cta}
-${content.cta.name}
-${content.cta.phone}
-${content.cta.email}
-${content.cta.location}
-]
 
 [DESIGN SYSTEM]
 LAYOUT TYPE: editorial
@@ -80,25 +66,23 @@ CONTENT AREA: 42%
 CTA AREA: 25%
 IMAGE ASPECT RATIO: Square (1:1)
 
-[PROFILE PHOTO PLACEHOLDER]
-Reserve 20-22% of the canvas in the lower-left region for post-production branding elements.
+[CTA RESERVED AREA]
 
-This region must remain visually clean.
+Reserve the lower 25% of the poster for a post-production CTA section.
 
-Allowed:
-• background gradients
-• subtle textures
-• soft shadows
+Requirements:
 
-Not allowed:
-• faces
-• people
-• text
-• icons
-• medical illustrations
-• important content
+• Leave the entire lower area visually clean
+• No doctor portraits
+• No people
+• No text in the left 30% of the CTA area
+• No icons in the left 30% of the CTA area
+• No important medical illustrations
+• Background elements may continue softly into this area
 
-This area will be replaced later with an actual doctor profile photograph.
+The CTA content and doctor profile will be added later during post-processing.
+
+Design the poster so the CTA section feels naturally integrated with the overall theme.
 
 [VISUAL DIRECTION]
 MAIN VISUAL: ${assets.heroImagePrompt}
