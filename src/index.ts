@@ -2,7 +2,7 @@ import { buildPoster } from "./orchestrator";
 
 async function main() {
   const result = await buildPoster(
-    "Peripheral Artery Disease",
+    "Managing Treatment siide effects after Surgery",
   );
 
   console.log(
